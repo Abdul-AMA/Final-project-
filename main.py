@@ -32,9 +32,9 @@ class Student:
 
     def student_details(self):
         print("-----------------")
-        print("Student ID \t\t Student name \t\t Studnet class \t\t Student courses")
+        print("Student ID \t\t Student name \t\t Student class \t\t Student courses")
 
-        print(self.student_ID, "\t\t", self.student_name, "\t\t", self.student_class, "\t\t", self.Student_courses_list)
+        print("  ",self.student_ID, "\t\t\t\t", self.student_name, "\t\t\t\t\t   ", self.student_class, "\t\t\t\t", self.Student_courses_list)
 
 
 while True:
@@ -69,15 +69,14 @@ while True:
 
 
     elif choice == 2:
-        x = True
-        while x==True:
+        while True:
 
             if len(students_IDs_list) == 0:
                 print("there are no students to search")
                 break
 
             try:
-                student_ID_check = int(input("Enter student ID (0 to exit): "))
+                student_ID_check = int(input("Enter student ID ( enter 0 to exit): "))
             except Exception:
                 print("Please Enter ID number :D")
                 continue
@@ -95,9 +94,44 @@ while True:
 
 
     elif choice == 3:
-        print(choice)
+        while True:
+
+            if len(students_IDs_list) == 0:
+                print("there are no students to search")
+                break
+
+            try:
+                student_ID_check = int(input("Enter student ID ( enter 0 to exit): "))
+            except Exception:
+                print("Please Enter ID number :D")
+                continue
+
+            if student_ID_check in students_IDs_list:
+                index_edit = students_IDs_list.index(student_ID_check)
+
+                students_list[index_edit].student_name = input("Enter new student name: ")
+                while True:
+                    new_class = input("Enter student class from (A, B, C): ")
+                    if new_class in ['A', 'B', 'C']:
+                        students_list[index_edit].student_class = new_class
+                        print(students_list[index_edit].student_details())
+                        break
+
+
+                print("Data of student with ID", student_ID_check, "is edited successfully ")
+                break
+            elif student_ID_check == 0:
+                break
+            print("ID doesn't exist")
+
     elif choice == 4:
-        print(choice)
+        while True:
+            if len(students_IDs_list) == 0:
+                print("there are no students to search")
+                break
+            for i in  students_list:
+                i.student_details()
+            break
 
 
     elif choice == 5:
@@ -120,4 +154,3 @@ while True:
         exit()
     else:
         print("Please Enter number from the list :D")
-
