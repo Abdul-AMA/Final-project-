@@ -154,6 +154,9 @@ while True:
                 index_add_s = students_IDs_list.index(student_ID_check_add)
                 while True:
                     course_add = input("Enter course name (enter 0 to exit): ")
+                    if course_add in students_list[index_add_s].student_courses_list:
+                        print("Course already exist!")
+                        break
                     if course_add in courses_names_list:
                         index_add_c = courses_names_list.index(course_add)
                         if courses_list[index_add_c].course_class == students_list[index_add_s].student_class :
